@@ -4,7 +4,6 @@ var Comment = require("../models/comment");
 
 var middlewareobj = {};
 
-
 middlewareobj.checkCampgroundOwnership = function(req,res,next){
 		if(req.isAuthenticated()){
 	     Campground.findById(req.params.id,function(error,foundCampground){	
@@ -18,7 +17,7 @@ middlewareobj.checkCampgroundOwnership = function(req,res,next){
 				 req.flash("error","you don't have permission to do that");
 				 res.redirect("back");
 			 }
-		 }
+		}
 	})
 	}else{
 		req.flash("error","you need to be logged in to do that!!!");
