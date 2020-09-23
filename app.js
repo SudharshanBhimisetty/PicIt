@@ -1,4 +1,6 @@
 require("dotenv").config();
+// const dotenv = require('dotenv/config');
+//// dotenv.config();
 
 var express     = require("express"),
     app         = express(),
@@ -19,9 +21,10 @@ var campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes = require("./routes/index")
 
 // export DATABASEURL = "mongodb://localhost/yelp_camp_v10"
-// console.log(process.env.DATABASEURL);
-var url = process.env.DATABASEURL ||"mongodb://localhost/yelp_camp_v10" ;
+console.log(process.env.DATABASEURL);
+// var url = process.env.DATABASEURL ||"mongodb://localhost/yelp_camp_v10" ;
 
+var url=process.env.DATABASEURL;
 mongoose.connect(url,{
 useNewUrlParser:true,
 useUnifiedTopology:true,
@@ -52,6 +55,7 @@ app.use(methodOverride("_method"));
 //req.user it contains the value of the user from login or register page
 //this below route pass it to every templete
 app.use(function(req, res, next){
+	// res.locals.geocoderApiKey = process.env.GEOCODER_API_KEY;
    res.locals.currentUser = req.user;
 	res.locals.error = req.flash("error");
 	res.locals.success = req.flash("success");

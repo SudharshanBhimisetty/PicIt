@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Add a marker using a place name</title>
+<title>view the location</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
@@ -16,17 +16,21 @@
 		<%=campground.location%>
 	</h1>
 	<div id="onmap" style="top:0;right:0"></div>
-	
+	<h1 id="key" style="display:none"><%= geocoderKey %></h1>
 	<!-- <h1 id="location" style="display:none"></h1> -->
 <div id="map"></div>
 <script src="https://unpkg.com/es6-promise@4.2.4/dist/es6-promise.auto.min.js"></script>
 <script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"></script>
 <script>
-	
+	// console.log(geocoderKey);
 	var info = document.getElementById("location");
+	var key = document.getElementById("key");
+	var k = key.innerHTML;
 	var r = info.innerHTML;
 	// console.log(r);
-	mapboxgl.accessToken = "pk.eyJ1Ijoic3VkaGFyc2hhbjI0IiwiYSI6ImNrZTJnejZmbjA5YTQzN243dHlrNnZiM2wifQ.ogBVUqSnb2E9Mty-95LVXw";
+	mapboxgl.accessToken =k;
+	// console.log(geocoder_api_key);
+	
     var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
 	    mapboxClient.geocoding
         .forwardGeocode({

@@ -24,7 +24,8 @@
 	
 	var info = document.getElementById("location");
 	var r = info.innerHTML;
-	mapboxgl.accessToken = "pk.eyJ1Ijoic3VkaGFyc2hhbjI0IiwiYSI6ImNrZTJnejZmbjA5YTQzN243dHlrNnZiM2wifQ.ogBVUqSnb2E9Mty-95LVXw";
+	
+		mapboxgl.accessToken = GEOCODER_API_KEY;
     var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
 	    mapboxClient.geocoding
         .forwardGeocode({
@@ -56,7 +57,7 @@
 </script>
 	<script>
 		
-		var ACCESS_TOKEN = "pk.eyJ1Ijoic3VkaGFyc2hhbjI0IiwiYSI6ImNrZTJnejZmbjA5YTQzN243dHlrNnZiM2wifQ.ogBVUqSnb2E9Mty-95LVXw";
+		var ACCESS_TOKEN = GEOCODER_API_KEY;
 		const addresschecking = function (address) { 
   
     var url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/'
