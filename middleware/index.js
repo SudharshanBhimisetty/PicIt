@@ -1,17 +1,17 @@
-var Campground = require("../models/campground");
+var Picture = require("../models/picture");
 var Comment = require("../models/comment");
 
 
 var middlewareobj = {};
 
-middlewareobj.checkCampgroundOwnership = function(req,res,next){
+middlewareobj.checkPictureOwnership = function(req,res,next){
 		if(req.isAuthenticated()){
-	     Campground.findById(req.params.id,function(error,foundCampground){	
+	     Picture.findById(req.params.id,function(error,foundPicture){	
 	      if(error){
-			  req.flash("error","Campground not found!!!");
+			  req.flash("error","Picture not found!!!");
 			res.redirect("back");
 		 }else{
-			 if(foundCampground.author.id.equals(req.user._id)){
+			 if(foundPicture.author.id.equals(req.user._id)){
 				   next();
 			 }else{
 				 req.flash("error","you don't have permission to do that");

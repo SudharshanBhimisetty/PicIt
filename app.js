@@ -8,7 +8,7 @@ var express     = require("express"),
     mongoose    = require("mongoose"),
     passport    = require("passport"),
     LocalStrategy = require("passport-local"),
-    Campground  = require("./models/campground"),
+    Picture  = require("./models/picture"),
     Comment     = require("./models/comment"),
     User        = require("./models/user"),
     seedDB      = require("./seeds"),
@@ -16,12 +16,12 @@ var express     = require("express"),
     flash =       require("connect-flash")
 
 
-var campgroundRoutes = require("./routes/campgrounds"),
+var pictureRoutes = require("./routes/pictures"),
     commentRoutes = require("./routes/comments"),
     indexRoutes = require("./routes/index")
 
 // export DATABASEURL = "mongodb://localhost/yelp_camp_v10"
-console.log(process.env.DATABASEURL);
+// console.log(process.env.DATABASEURL);
 // var url = process.env.DATABASEURL ||"mongodb://localhost/yelp_camp_v10" ;
 
 var url=process.env.DATABASEURL;
@@ -51,7 +51,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 app.use(methodOverride("_method"));
 
-
+// seedDB();
 //req.user it contains the value of the user from login or register page
 //this below route pass it to every templete
 app.use(function(req, res, next){
@@ -63,10 +63,10 @@ app.use(function(req, res, next){
 });
 
 
-
+app.locals.moment = require('moment');
 app.use(indexRoutes);
-app.use("/campgrounds/:id/comments",commentRoutes);
-app.use("/campgrounds",campgroundRoutes);
+app.use("/pictures/:id/comments",commentRoutes);
+app.use("/pictures",pictureRoutes);
 // ====================
 // COMMENTS ROUTES
 // ====================

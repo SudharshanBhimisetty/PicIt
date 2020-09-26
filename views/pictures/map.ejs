@@ -13,7 +13,7 @@
 </head>
 <body>
 	<h1 id="location" style="display:none">
-		<%=campground.location%>
+		<%=picture.location%>
 	</h1>
 	<div id="onmap" style="top:0;right:0"></div>
 	<h1 id="key" style="display:none"><%= geocoderKey %></h1>
@@ -27,7 +27,7 @@
 	var key = document.getElementById("key");
 	var k = key.innerHTML;
 	var r = info.innerHTML;
-	// console.log(r);
+
 	mapboxgl.accessToken =k;
 	// console.log(geocoder_api_key);
 	
@@ -40,7 +40,7 @@
         })
         .send()
         .then(function(response) {
-			console.log(response);
+		
             if (
                 response &&
                 response.body &&
@@ -50,21 +50,45 @@
                 var feature = response.body.features[0];			
             var long = response.body.features[0].center[0];
             var lat = response.body.features[0].center[1];
+	
+				
+				var k = response.body.query;
 		
-		var m = "<h3><a href=https://www.google.com/search?q=" + response.body.query[0] + " target='_blank'>View more information</a></h3>";
+				var ourQuery="";
+				k.forEach(function(addThis){
+					ourQuery = ourQuery + "+" + addThis;
+				})
+		
+				
+		var m = "<h3><a href=https://www.google.com/search?q=" + ourQuery + " target='_blank'>View more information</a></h3>";
+				
+			
+				
                 var map = new mapboxgl.Map({
                      container: 'map',           
                     style: 'mapbox://styles/mapbox/streets-v11',
                     center: feature.center,
                     zoom: 10
                 });
-                new mapboxgl.Marker().setLngLat(feature.center).addTo(map);	
+				
+                var icon = new mapboxgl.Marker().setLngLat(feature.center).addTo(map);	
+				
+			
 				map.on("click",function(e){
 				    var popup = new mapboxgl.Popup({ closeOnClick: false })
 					.setLngLat([long,lat])
 					.setHTML(m)
 					.addTo(map);
-			}) 
+			})
+				
+				map.on('mouseenter',"icon",function () {
+					map.getCanvas().style.cursor = 'pointer';
+				});
+ 
+// Change it back to a pointer when it leaves.
+				map.on('mouseleave',"icon",function () {
+					map.getCanvas().style.cursor = '';
+				});
 			} });
 	
 </script>

@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-var Campground = require("./models/campground");
+var Picture = require("./models/picture");
 var Comment   = require("./models/comment");
 
 var data = [
@@ -23,37 +23,37 @@ var data = [
 
 function seedDB(){
    //Remove all campgrounds
-   Campground.deleteMany({}, function(err){
+   Picture.deleteMany({}, function(err){
   
     if(err){
           console.log(err);
       }
   
-      console.log("removed campgrounds!");
-       //add a few campgrounds
-      data.forEach(function(seed){
-          Campground.create(seed, function(err, campground){
-              if(err){
-                  console.log(err)
-              } else {
-                  console.log("added a campground");
-                  //create a comment
-                  Comment.create(
-                      {
-                          text: "This place is great, but I wish there was internet",
-                          author: "Homer"
-                      }, function(err, comment){
-                          if(err){
-                              console.log(err);
-                          } else {
-                              campground.comments.push(comment);
-                              campground.save();
-                              console.log("Created new comment");
-                          }
-                      });
-              }
-          });
-      });
+      console.log("removed pictures!");
+       //add a few pictures
+    //  data.forEach(function(seed){
+    //      Picture.create(seed, function(err, picture){
+    //          if(err){
+    //              console.log(err)
+    //          } else {
+    //              console.log("added a picture");
+    //              //create a comment
+    //              Comment.create(
+    //                  {
+    //                      text: "This place is great, but I wish there was internet",
+    //                      author: "Homer"
+    //                  }, function(err, comment){
+    //                      if(err){
+    //                          console.log(err);
+    //                      } else {
+    //                          picture.comments.push(comment);
+    //                          picture.save();
+    //                          console.log("Created new comment");
+    //                      }
+    //                  });
+    //          }
+    //      });
+    //  });
   }); 
     //add a few comments
    

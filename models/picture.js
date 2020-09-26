@@ -1,12 +1,13 @@
 var mongoose = require("mongoose");
 
-var campgroundSchema = new mongoose.Schema({
+var pictureSchema = new mongoose.Schema({
    name: String,
-   price :String,
+   
    image: String,
 	imageId: String,
    description: String,
 	location: String,
+	createdAt: { type: Date, default: Date.now },
    author : {
 	   id:{
          type: mongoose.Schema.Types.ObjectId,
@@ -22,6 +23,6 @@ var campgroundSchema = new mongoose.Schema({
    ]
 });
 
-module.exports = mongoose.model("Campground", campgroundSchema);
+module.exports = mongoose.model("Picture", pictureSchema);
 
     

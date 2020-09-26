@@ -1,0 +1,45 @@
+<%- include("../partials/header") %>
+
+
+
+<div class="ui main text segment container">
+    
+        
+			<div class="ui huge header">
+				<h1>Edit <%=picture.name%></h1>	
+			</div>
+	
+       
+            <form class="ui form" action="/pictures/<%=picture._id%>?_method=PUT" method="POST"  enctype="multipart/form-data">
+				<div class="field">
+					<label>NAME</label>
+                    <input type="text" name="picture[name]" value="<%=picture.name%>">
+                </div>
+
+				<div class="field">
+                    <label for="image">IMAGE</label>
+                    <input type="file" id="image" name="image" accept="image/*">
+                </div>
+				
+				<div class="field">
+   					 <label for="location">LOCATION</label>
+  					  <input type="text" name="picture[location]" id="location" value="<%= picture.location %>">
+				</div>
+                <div class="field">
+					<label>DESCRIPTION</label>
+					<textarea name="picture[description]"><%=picture.description%></textarea>
+                </div>
+				
+                <div class="field">
+                    <button class="ui basic button black">Submit</button>
+					<a class="ui basic button black float-right" href="/pictures/<%= picture._id %>">Go Back</a>
+                </div>
+				
+            </form>
+            
+        
+   
+</div>
+
+
+<%- include("../partials/footer") %>

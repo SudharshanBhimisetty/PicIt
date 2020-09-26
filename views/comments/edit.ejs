@@ -1,19 +1,24 @@
 <%- include("../partials/header") %>
-<div class="container">
-    <div class="row">
-        <h1 style="text-align: center">Edit Comment</h1>
-        <div style="width: 30%; margin: 25px auto;">
-            <form action="/campgrounds/<%= campground_id %>/comments/<%=comment._id%>?_method=PUT" method="POST">
-                <div class="form-group">
-                    <input class="form-control" type="text" name="comment[text]" value="<%=comment.text%>">
+
+<div class="ui main text container segment" style="width:40%">
+	
+	
+    <div class="ui huge header text-center">
+		<h1>Edit Comment</h1>	
+	</div>
+	
+            <form  class="ui form" action="/pictures/<%= picture_id %>/comments/<%=comment._id%>?_method=PUT" method="POST">
+                <div class="field">
+					<label>TEXT</label>
+                    <input type="text" name="comment[text]" value="<%=comment.text%>">
                 </div>
 
-                <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                <div class="field">
+                    <button class="ui basic button black float-right">Submit!</button>
+					    <a class="ui basic button black" href="/pictures/<%= picture_id %>">Go Back</a>
                 </div>
             </form>
-            <a href="/campgrounds">Go Back</a>
-        </div>
-    </div>
+        
+
 </div>
 <%- include("../partials/footer") %>

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>YelpCamp</title>
+        <title>PicIt</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+			 <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" rel="stylesheet">
         <link rel="stylesheet" href="/stylesheets/landing.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
     </head>
@@ -22,8 +23,16 @@
     </div>
     
     <div id="landing-header">
- 		<h1>Welcome to YelpCamp!</h1>
-		<a href="/campgrounds" class="btn btn-lg btn-success">View All Campgrounds</a>
+ 		<h1 style="word-spacing:0.7rem">Welcome to <span style="letter-spacing:0.2rem">PicIt</span></h1>
+		<a href="/pictures" class="btn btn-lg btn-success ">View All Pictures</a>
+					 <p>
+				 <form  action="/pictures" method="GET" class="form-inline">
+					 <div class="field  mt-5">
+						 <input type="text" name="search" placeholder="Search" class="form-control">
+						 <input type="submit" value="Search" class="btn btn-default">
+					 </div>
+			 </form>
+			 </p>
     </div>
     
     <ul class="slideshow">

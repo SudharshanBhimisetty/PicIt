@@ -1,0 +1,44 @@
+<%- include("../partials/header") %>
+
+ <div class="container">
+     <header class="ui segment container mb-5">
+         <div class="container bg-grey">
+             <h1 class="display-4" style="word-spacing:0.5rem;font-family: 'Secular One', sans-serif"><i class="fab fa-algolia"></i> Welcome to <span style="letter-spacing:0.2rem">PicIt</span></h1>
+             <h4 style="font-weight:bold">Upload your photography pictures and get ratings by others</h4>
+             <p>
+                <a class="ui button basic black" href="/pictures/new">Add New Picture</a>
+             </p>
+							 <p>
+				 <form action="/" method="GET" class="form-inline">
+					 <div class="form-group">
+						 <input type="submit" value="Go Back" class="ui basic button black">
+					 </div>
+			 </form>
+			 </p>
+         </div>
+     </header>
+     
+     <div class="row" style="display:flex; flex-wrap: wrap;">
+        <% pictures.forEach(function(picture){ %>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
+
+				<div class="card">
+ 					 <img class="card-img-top" src="<%= picture.image %>" alt="<%= picture.name %>" style="width:100%;height:30vh;object-fit:cover">
+  						<div class="card-body text-center">
+  							  <h5 class="card-title"><%= picture.name %></h5>
+  							
+  							  <a style="font-size:1rem" href="/pictures/<%= picture._id %>" class="ui button basic black">View More  <i class="fas fa-angle-double-right"></i></a>
+  						</div>
+						 <div class="p-3">
+							<div>Pic By <span><h5 class="d-inline"><%= picture.author.username%></h5></span></div>
+							<div class=" float-right">Date : <span><h5 class="d-inline"><%= moment(picture.createdAt).fromNow() %></h5></span></div>
+					     </div>
+				</div>
+				
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<%- include("../partials/footer") %>
+

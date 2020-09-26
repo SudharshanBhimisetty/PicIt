@@ -1,0 +1,42 @@
+<%- include("../partials/header") %>
+
+
+<div class="ui main text segment container">
+	
+    
+        <div class="ui huge header">
+			<h1>Add a Picture</h1>	
+		</div>
+	
+		<form class="ui form" action="/pictures" method="POST" enctype="multipart/form-data">
+			
+                <div class="field">
+					<label>NAME</label>
+                    <input type="text" name="picture[name]" placeholder="Name" required>
+                </div>
+
+				<div class="field">
+                    <label for="image">IMAGE</label>
+                    <input type="file" id="image" name="image" accept="image/*" required>
+                </div>
+				<div class="field">
+    				<label for="location">LOCATION</label>
+    				<input type="text" name="picture[location]" id="location" placeholder="Yosemite National Park, CA" required>
+				</div>
+                <div class="field">
+					<label>DESCRIPTION</label>
+                    <textarea name="picture[description]"></textarea>
+                </div>
+                <div class="field">
+                    <button class="ui basic button black float-right">Submit</button>
+				</div>
+			
+            </form>
+            
+       
+     <a class="ui basic button black" href="/pictures">Go Back</a>
+</div>
+
+
+
+<%- include("../partials/footer") %>
